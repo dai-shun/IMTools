@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>DevelopmentTools</title>
+    <!-- load a custom version of Ace editor -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js"></script>
+    <!-- load the minimalist version of JSONEditor, which doesn't have Ace embedded -->
+    <link href="./dist/jsoneditor/jsoneditor.css" rel="stylesheet" type="text/css">
+    <script src="./dist/jsoneditor/jsoneditor-minimalist.js"></script>
+    <script src="./dist/socket.io.js"></script>
+    <script>
+      (() => {
+        if (!process.env.HOT) {
+          const link = document.createElement('link');
+          link.rel = 'stylesheet';
+          link.href = './dist/style.css';
+          // HACK: Writing the script path should be done with webpack
+          document.getElementsByTagName('head')[0].appendChild(link);
+        }
+      })();
+    </script>
+
+  </head>
+  <body>
+    <div id="root" ></div>
+    <div id="app" ></div>
+    <script>
+      {
+        // Dynamically include DLL if in development
+        if (process.env.NODE_ENV === 'development') {
+          const dllScript = document.createElement('script');
+          dllScript.src = '../dll/vendor.dll.js';
+          document.body.appendChild(dllScript);
+        }
+
+        // Dynamically insert the renderer process
+        const script = document.createElement('script');
+        const port = process.env.PORT || 1212;
+
+        script.src = (process.env.HOT)
+          ? 'http://localhost:' + port + '/dist/bundle.js'
+          : './dist/bundle.js';
+
+        // @HACK: Writing the script path should be done
+        //        with HtmlWebpackPlugin
+        document.body.appendChild(script);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,16 @@
+{
+  "name": "IMtest",
+  "productName": "IMtest",
+  "version": "1.0.0",
+  "description": "IM测试工具，用于IM开发过程中的消息发送测试、redis查询、数据库查询等",
+  "main": "./main.js",
+  "author": {
+    "name": "daishun",
+    "email": "shun.dai@zhaopin.com.cn",
+    "url": "https://github.com/dai-shun"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "mqtt": "^2.6.2"
+  }
+}

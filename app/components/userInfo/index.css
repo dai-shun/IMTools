@@ -1,0 +1,16 @@
+.content{
+  fontFamily:"HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  color:green;
+  font-size: 20px;
+}
+.content li{
+  margin: 10px 0 10px 0;
+}
+.content li span{
+  margin:0px 5px 0px 5px;
+}
+.span2{
+  display: block;
+  word-break: break-all;
+  width: 166px;
+}
